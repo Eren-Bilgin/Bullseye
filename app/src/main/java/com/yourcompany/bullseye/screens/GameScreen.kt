@@ -1,6 +1,5 @@
 package com.yourcompany.bullseye.screens
 
-import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -89,7 +88,7 @@ fun GameScreen(
                             difference = difference
                         )
 
-                       // Log.i("ALERT VISIBLE", alertIsVisible.toString())
+                        // Log.i("ALERT VISIBLE", alertIsVisible.toString())
                     },
                     shape = MaterialTheme.shapes.medium,
                     contentPadding = PaddingValues(16.dp)
@@ -101,7 +100,7 @@ fun GameScreen(
                     totalScore = totalScore,
                     round = currentRound.value,
                     modifier = Modifier.fillMaxSize(),
-                    onConfirmButtonClickDetailStart = { currentRound.value = 1 ; totalScore=0 },
+                    onConfirmButtonClickDetailStart = { currentRound.value = 1; totalScore = 0 },
                     onNavigateToAbout = onNavigateToAbout
                 )
             }
@@ -121,6 +120,7 @@ fun GameScreen(
                     onConfirmButtonClick_Random = { number ->
                         targetValue = number
                         currentRound.value += 1
+                        alertIsVisible = false
                     },
                     points = PointsForCurrentRound(
                         targetValue = targetValue,
@@ -128,9 +128,7 @@ fun GameScreen(
                         difference = difference
                     )
                     //hideDialog = {alertIsVisible = false}
-                ) {
-                    alertIsVisible = false
-                }
+                )
             }
         }
     }

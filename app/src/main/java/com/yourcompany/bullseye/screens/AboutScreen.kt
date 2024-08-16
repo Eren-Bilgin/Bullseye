@@ -32,12 +32,11 @@ import com.yourcompany.bullseye.R
 fun AboutScreen(onNavigateBack: () -> Unit) {
     Scaffold(
 
-        // New Code Start
         topBar = {
             TopAppBar(
                 title = { Text(stringResource(id = R.string.about_page_title)) },
                 navigationIcon = {
-                    IconButton(onClick = { onNavigateBack()}) {
+                    IconButton(onClick = { onNavigateBack() }) {
                         Icon(
                             imageVector = Icons.Filled.ArrowBack,
                             contentDescription = stringResource(id = R.string.back_button_text)
@@ -51,9 +50,8 @@ fun AboutScreen(onNavigateBack: () -> Unit) {
                 )
             )
         },
-        // New Code End
 
-    ) {
+        ) {
 
             paddingValues ->
         Column(
@@ -75,7 +73,7 @@ fun AboutScreen(onNavigateBack: () -> Unit) {
                 modifier = Modifier.padding(horizontal = 16.dp, vertical = 24.dp)
             )
             Button(
-                onClick = {onNavigateBack() },
+                onClick = { onNavigateBack() },
                 shape = MaterialTheme.shapes.medium,
             ) {
                 Text(text = stringResource(id = R.string.back_button_text))
@@ -92,5 +90,5 @@ fun AboutScreen(onNavigateBack: () -> Unit) {
 @Preview(showBackground = true, device = Devices.AUTOMOTIVE_1024p, widthDp = 864, heightDp = 432)
 @Composable
 fun AboutScreenPreview() {
-    AboutScreen(onNavigateBack ={})
+    AboutScreen(onNavigateBack = {})
 }

@@ -49,7 +49,8 @@ fun MainScreen(
         }
 
         composable("about") {
-            AboutScreen(onNavigateBack = {navController.navigateUp()}) }
+            AboutScreen(onNavigateBack = { navController.popBackStack() })
+        }
     }
 
 }

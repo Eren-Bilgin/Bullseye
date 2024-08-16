@@ -7,7 +7,7 @@ import kotlin.math.abs
 fun AlertTitle(
     targetValue: Int,
     sliderValue: Int,
-    difference:Int
+    difference: Int
 ): Int {
     val title: Int = if (difference == 0) {
         R.string.alert_title_1

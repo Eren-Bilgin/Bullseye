@@ -1,7 +1,5 @@
 package com.yourcompany.bullseye.components
 
-import kotlin.math.abs
-
 
 fun PointsForCurrentRound(
     targetValue: Int,
