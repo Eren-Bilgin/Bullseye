@@ -31,7 +31,6 @@ import com.yourcompany.bullseye.R
 @Composable
 fun AboutScreen(onNavigateBack: () -> Unit) {
     Scaffold(
-
         topBar = {
             TopAppBar(
                 title = { Text(stringResource(id = R.string.about_page_title)) },
@@ -50,10 +49,7 @@ fun AboutScreen(onNavigateBack: () -> Unit) {
                 )
             )
         },
-
-        ) {
-
-            paddingValues ->
+    ) { paddingValues ->
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
@@ -78,13 +74,8 @@ fun AboutScreen(onNavigateBack: () -> Unit) {
             ) {
                 Text(text = stringResource(id = R.string.back_button_text))
             }
-
-
         }
-
     }
-
-
 }
 
 @Preview(showBackground = true, device = Devices.AUTOMOTIVE_1024p, widthDp = 864, heightDp = 432)

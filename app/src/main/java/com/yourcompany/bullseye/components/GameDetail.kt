@@ -29,46 +29,34 @@ fun GameDetail(
     round: Int = 1,
     onConfirmButtonClickDetailStart: () -> Unit,
     onNavigateToAbout: () -> Unit
-
 ) {
-
     Row(
         modifier = modifier.fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Absolute.SpaceBetween
     ) {
         FilledIconButton(
-            onClick = { onConfirmButtonClickDetailStart() },
-            colors = IconButtonDefaults.filledIconButtonColors(
+            onClick = {
+                onConfirmButtonClickDetailStart()
+            }, colors = IconButtonDefaults.filledIconButtonColors(
                 contentColor = MaterialTheme.colorScheme.tertiary
-            ),
-            modifier = Modifier.size(50.dp)
+            ), modifier = Modifier.size(50.dp)
         ) {
             Icon(
                 Icons.Filled.Refresh,
                 contentDescription = stringResource(id = R.string.restart_btn_desc)
             )
         }
-
         GameInfo(label = stringResource(id = R.string.score_label), value = totalScore)
-
         GameInfo(label = stringResource(id = R.string.current_round_label), value = round)
-
         FilledIconButton(
-            onClick = { onNavigateToAbout() },
-
-            colors = IconButtonDefaults.filledIconButtonColors(
+            onClick = { onNavigateToAbout() }, colors = IconButtonDefaults.filledIconButtonColors(
                 contentColor = MaterialTheme.colorScheme.tertiary
-            ),
-            modifier = Modifier.size(50.dp)
-        )
-        {
+            ), modifier = Modifier.size(50.dp)
+        ) {
             Icon(
-                Icons.Filled.Info,
-                contentDescription = stringResource(id = R.string.about_btn_desc)
-
+                Icons.Filled.Info, contentDescription = stringResource(id = R.string.about_btn_desc)
             )
-
         }
     }
 }
@@ -76,7 +64,6 @@ fun GameDetail(
 @Composable
 fun GameInfo(label: String, value: Int) {
     Column(
-
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(label)

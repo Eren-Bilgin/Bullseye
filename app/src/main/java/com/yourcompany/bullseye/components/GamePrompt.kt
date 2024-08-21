@@ -17,20 +17,22 @@ import com.yourcompany.bullseye.R
 fun GamePrompt(
     modifier: Modifier = Modifier,
     targetValue: Int,
-    //hideTargetValue: () -> Unit,
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
     ) {
-        Text(stringResource(R.string.instruction_text),
-            style =MaterialTheme.typography.titleMedium.copy(letterSpacing = 1.sp, fontWeight = FontWeight.Bold) )
+        Text(
+            stringResource(R.string.instruction_text),
+            style = MaterialTheme.typography.titleMedium.copy(
+                letterSpacing = 1.sp,
+                fontWeight = FontWeight.Bold
+            )
+        )
         Text(
             stringResource(R.string.target_value_text, targetValue),
-            /*fontSize = 32.sp,
-            fontWeight = FontWeight.Bold,*/
             modifier = modifier.padding(8.dp),
-            style = MaterialTheme.typography.displayMedium.copy(fontWeight = FontWeight.Bold )
+            style = MaterialTheme.typography.displayMedium.copy(fontWeight = FontWeight.Bold)
         )
     }
 

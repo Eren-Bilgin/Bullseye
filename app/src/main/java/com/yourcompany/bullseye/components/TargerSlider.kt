@@ -24,7 +24,6 @@ import com.yourcompany.bullseye.R
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TargerSlider(
-    modifer: Modifier = Modifier,
     value: Float = 0.5f,
     onValueChange: (Float) -> Unit
 ) {
@@ -62,8 +61,6 @@ fun TargerSlider(
             },
 
             )
-
-
         Text(
             text = stringResource(R.string.max_value_text),
             textAlign = TextAlign.Center,

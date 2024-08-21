@@ -25,5 +25,5 @@
     <string name="result_dialog_message">The Slider\'s value is %1$d.\n Your Distance: %2$d \n You scored is %3$d points this round</string>
     <string name="slider_thumb_description">Slider Thumb</string>
     <string name="background_image">Background Image</string>
-    <string name="about_page_title">about_page_title</string>
+    <string name="about_page_title">Info</string>
 </resources>

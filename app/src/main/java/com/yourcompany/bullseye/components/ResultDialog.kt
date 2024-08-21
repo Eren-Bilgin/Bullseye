@@ -11,38 +11,26 @@ import kotlin.random.Random
 @Composable
 fun ResultDialog(
     sliderValue: Int,
-    targetValue: Int,
     difference: Int,
-    onConfirmButtonClick_Random: (Int) -> Unit,
+    onConfirmButtonClickRandom: (Int) -> Unit,
     points: Int,
     dialogTitle: Int,
-    ) {
-
-
+) {
     AlertDialog(onDismissRequest = {
-        onConfirmButtonClick_Random(Random.nextInt(1, 100))
-    },
-        confirmButton = {
-            TextButton(
-                onClick = {
-                    onConfirmButtonClick_Random(Random.nextInt(1, 100))
-                }
-            ) {
-                Text(stringResource(R.string.result_dialog_button_text))
-            }
-        },
-        title = { Text(stringResource(id = dialogTitle)) },
-
-
+        onConfirmButtonClickRandom(Random.nextInt(1, 100))
+    }, confirmButton = {
+        TextButton(onClick = {
+            onConfirmButtonClickRandom(Random.nextInt(1, 100))
+        }) {
+            Text(stringResource(R.string.result_dialog_button_text))
+        }
+    }, title = { Text(stringResource(id = dialogTitle)) },
         text = {
             Text(
                 stringResource(
-                    R.string.result_dialog_message, sliderValue,
-                    difference,
-                    points
+                    R.string.result_dialog_message, sliderValue, difference, points
                 )
             )
         }
-
     )
 }

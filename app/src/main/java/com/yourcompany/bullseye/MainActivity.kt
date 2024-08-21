@@ -7,7 +7,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
@@ -26,11 +25,9 @@ class MainActivity : ComponentActivity() {
         setContent {
             BullseyeTheme {
                 Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.surface
+                    modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.surface
                 ) {
                     MainScreen()
-
                 }
             }
         }
@@ -43,9 +40,7 @@ fun MainScreen(
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = "gamescreen") {
         composable("gamescreen") {
-            GameScreen(
-                onNavigateToAbout = { navController.navigate("about") }
-            )
+            GameScreen(onNavigateToAbout = { navController.navigate("about") })
         }
 
         composable("about") {

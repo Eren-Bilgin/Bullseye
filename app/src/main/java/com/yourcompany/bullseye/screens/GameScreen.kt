@@ -26,12 +26,12 @@ import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.yourcompany.bullseye.R
-import com.yourcompany.bullseye.components.AlertTitle
 import com.yourcompany.bullseye.components.GameDetail
 import com.yourcompany.bullseye.components.GamePrompt
-import com.yourcompany.bullseye.components.PointsForCurrentRound
 import com.yourcompany.bullseye.components.ResultDialog
 import com.yourcompany.bullseye.components.TargerSlider
+import com.yourcompany.bullseye.components.alertTitle
+import com.yourcompany.bullseye.components.pointsForCurrentRound
 import com.yourcompany.bullseye.ui.theme.BullseyeTheme
 import kotlin.math.abs
 import kotlin.random.Random
@@ -46,12 +46,7 @@ fun GameScreen(
     val sliderToInt = (sliderValue * 100).toInt()
     var totalScore by rememberSaveable { mutableStateOf(0) }
     var currentRound = rememberSaveable { mutableStateOf(1) }
-    var difference = abs(targetValue - sliderToInt).toInt()
-    //Log.i("target", targetValue.toString())
-    // Log.i("difference:",difference.toString())
-    //Log.i("target:",targetValue.toString())
-    //Log.i("slider:",sliderToInt.toString())
-
+    var difference = abs(targetValue - sliderToInt)
     Box {
         Image(
             modifier = Modifier
@@ -61,7 +56,6 @@ fun GameScreen(
             contentScale = ContentScale.FillWidth, // New Code
             contentDescription = stringResource(R.string.background_image)
         )
-
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
@@ -75,27 +69,20 @@ fun GameScreen(
                 verticalArrangement = Arrangement.SpaceEvenly,
                 modifier = Modifier.weight(9f)
             ) {
-                GamePrompt(targetValue = targetValue)
-                TargerSlider(value = sliderValue,
-                    onValueChange = { value -> sliderValue = value })
-
+                GamePrompt(
+                    targetValue = targetValue
+                )
+                TargerSlider(value = sliderValue, onValueChange = { value -> sliderValue = value })
                 Button(
                     onClick = {
                         alertIsVisible = true
-                        totalScore += PointsForCurrentRound(
-                            targetValue = targetValue,
-                            sliderValue = sliderToInt,
+                        totalScore += pointsForCurrentRound(
                             difference = difference
                         )
-
-                        // Log.i("ALERT VISIBLE", alertIsVisible.toString())
-                    },
-                    shape = MaterialTheme.shapes.medium,
-                    contentPadding = PaddingValues(16.dp)
+                    }, shape = MaterialTheme.shapes.medium, contentPadding = PaddingValues(16.dp)
                 ) {
                     Text(text = stringResource(R.string.hit_me_button_text))
                 }
-
                 GameDetail(
                     totalScore = totalScore,
                     round = currentRound.value,
@@ -104,36 +91,27 @@ fun GameScreen(
                     onNavigateToAbout = onNavigateToAbout
                 )
             }
-            val dialogTitle = AlertTitle(
-                targetValue = targetValue,
-                sliderValue = sliderToInt,
+            val dialogTitle = alertTitle(
                 difference = difference
             )
-
             Spacer(modifier = Modifier.weight(.5f))
             if (alertIsVisible) {
                 ResultDialog(
                     sliderValue = sliderToInt,
-                    targetValue = targetValue,
                     dialogTitle = dialogTitle,
                     difference = difference,
-                    onConfirmButtonClick_Random = { number ->
+                    onConfirmButtonClickRandom = { number ->
                         targetValue = number
                         currentRound.value += 1
                         alertIsVisible = false
                     },
-                    points = PointsForCurrentRound(
-                        targetValue = targetValue,
-                        sliderValue = sliderToInt,
+                    points = pointsForCurrentRound(
                         difference = difference
                     )
-                    //hideDialog = {alertIsVisible = false}
                 )
             }
         }
     }
-
-
 }
 
 @Preview(showBackground = true, device = Devices.AUTOMOTIVE_1024p, widthDp = 864, heightDp = 432)
